@@ -54,7 +54,7 @@ type GL struct {
 	Entrysign     string    `json:"entrysign"`
 	Date1         string    `json:"Date1"`
 	Date2         string    `json:"Date2"`
-	UetrId        string    `json:"uetr"`
+	UetrId        string    `json:"uetr30"`
 	Branch        string    `json:"branch"`
 	Reconciled    bool      `json:"reconcile"`
 	CreatedDt     string    `json:"crtdate"`
@@ -534,8 +534,8 @@ func (s *SmartContract) ReconciliationRecon3(APIstub shim.ChaincodeStubInterface
 	}
 	defer settlePoolIterator.Close()
 
-	var amount [7]float64
-	matchmarkoffTrans := make([]map[string]interface{}, 7)
+	var amount [10]float64
+	matchmarkoffTrans := make([]map[string]interface{}, 10)
 
 	for i := range matchmarkoffTrans {
 		matchmarkoffTrans[i] = make(map[string]interface{})
@@ -641,7 +641,7 @@ func (s *SmartContract) ReconciliationRecon3(APIstub shim.ChaincodeStubInterface
 
 }
 
-func contains(arr [7]float64, target float64) (bool, int) {
+func contains(arr [10]float64, target float64) (bool, int) {
 	i := 0
 	for _, value := range arr {
 		if math.Abs(value) == target {
